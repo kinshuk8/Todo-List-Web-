@@ -74,32 +74,27 @@
  var taskInput = document.getElementById("taskInput");
     var tasksList = document.getElementById("tasksList");
 
-    // Function to add a task
     function addTask() {
-      // Get the task name from the input field
       var taskName = taskInput.value.trim();
 
-      // Check if the task name is not empty
       if (taskName) {
-        // Create a new list item element
         var listItem = document.createElement("li");
 
-        // Create a new span element to display the task name
         var taskSpan = document.createElement("span");
         taskSpan.textContent = taskName;
-
-        // Append the span element to the list item
+		var removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.onclick = function() {
+          removeTask(listItem);
+        };
         listItem.appendChild(taskSpan);
-
-        // Append the list item to the tasks list
+		listItem.appendChild(removeButton);
         tasksList.appendChild(listItem);
 
-        // Clear the input field
         taskInput.value = "";
       }
     }
 
-    // Get reference to the add task button and add event listener
     var addTaskBtn = document.getElementById("addTaskBtn");
     addTaskBtn.addEventListener("click", addTask);
   </script>
